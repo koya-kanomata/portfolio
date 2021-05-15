@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./style.css">
+        <title>企業検索APP</title>
+    </head>
+
+    <body>
+        <h2>---------マイナビ転職 企業検索APP---------</h2>
+        <div class="">
+            キーワード   :<input id="search_word" type="text"></input><br/>
+            <button id="search">検索</button><br/>
+            
+        </div>
+    
+        <div>
+            <textarea id="result" class="log-view-area"></textarea>
+        </div>
+        <script type="text/javascript" src="./eel.js"></script>
+        <script>
+            //検索ボタン押下をトリガーにview.py記載の関数を呼び出し。
+            search.addEventListener('click', () => {
+                //alert(serch_word.value)
+                eel.search_company(search_word.value) //検索ワード、CSVファイルを引数
+            })
+            // テキストエリアに結果を出力する関数を定義。search.pyで呼び出す。
+            eel.expose(view_log_js)
+            function view_log_js(text){
+                result.value += text + "\n"
+            }
+        </script>
+    </body>
+</html>

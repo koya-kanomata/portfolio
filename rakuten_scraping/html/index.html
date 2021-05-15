@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./style.css">
+        <title>楽天市場商品検索APP</title>
+    </head>
+
+    <body>
+        <h2>---------楽天市場商品検索APP---------</h2>
+        <div class="">
+            検索ワード   :<input id="search_word" type="text"></input><br/>
+            検索数   :<input id="item_num" type="text"></input>
+            <button id="search">検索</button><br/>
+            
+        </div>
+    
+        <div>
+            <textarea id="result" class="log-view-area"></textarea>
+        </div>
+        <script type="text/javascript" src="./eel.js"></script>
+        <script>
+            //検索ボタン押下をトリガーにview.py記載の関数を呼び出し。
+            search.addEventListener('click', () => {
+                //alert(serch_word.value)
+                eel.search_item(search_word.value,item_num.value) //検索ワード、CSVファイルを引数
+            })
+            // テキストエリアに結果を出力する関数を定義。search.pyで呼び出す。
+            eel.expose(view_log_js)
+            function view_log_js(text){
+                result.value += text + "\n"
+            }
+        </script>
+    </body>
+</html>
