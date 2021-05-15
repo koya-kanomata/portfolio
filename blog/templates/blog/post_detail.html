@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}"> -->
+
+
+{% block title %}投稿一覧 | {{ block.super }}{% endblock %}
+{% block description %}マイブログです。毎日更新します。{% endblock %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<p>{{ object.published_at|date }}</p>
+<p>{{ object.category.name }}</p>
+<img src="/media/post_content_images/IMG_0759.jpg" width="512" height="360" alt="Pipenv | Python">
+{% for tag in object.tags.all %}
+{{ tag.name }}
+{% endfor %}
+<hr>
+{{ object.content|safe }}
+
+{% endblock %}

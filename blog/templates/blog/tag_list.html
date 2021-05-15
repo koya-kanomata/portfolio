@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}"> -->
+
+
+{% block title %}投稿一覧 | {{ block.super }}{% endblock %}
+{% block description %}マイブログです。毎日更新します。{% endblock %}
+
+{% block content %}
+
+<h1>タグ一覧</h1>
+<ul>
+  {% for tag in object_list %}
+  <li><a href="{% url 'blog:tag_post' tag.slug %}">{{ tag.name }} ({{ tag.num_posts }})</a></li>
+  {% empty %}
+  <li>タグはありません。</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
